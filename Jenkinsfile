@@ -1,15 +1,9 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('build') {
-            steps {
-                git branch: 'main', poll: false, url: 'https://github.com/Ahmed-Mas/jenkins-demo'
-            }
-        }
-        stage('test') {
-            steps {
-                sh 'pytest'
-            }
+node {
+    stage('Build/Test') {
+        checkout scm
+        def testImage = docker.build("test-image") 
+        testImage.inside {
+            sh 'pytest'
         }
     }
 }
