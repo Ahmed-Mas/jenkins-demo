@@ -1,11 +1,17 @@
 pipeline {
-    agent { dockerfile true }
-    stages {
-        stage("Build/Test") {
-            steps{
-                sh 'pylint demo'
-                sh 'pytest'
-            }
-        }
+  agent {
+    dockerfile {
+      filename 'Dockerfile'
     }
+
+  }
+  stages {
+    stage('Build/Test') {
+      steps {
+        sh 'pylint demo'
+        sh 'pytest'
+      }
+    }
+
+  }
 }
