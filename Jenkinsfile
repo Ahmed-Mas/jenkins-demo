@@ -1,5 +1,5 @@
 pipeline {
-    agent { Dockerfile true }
+    agent { dockerfile true }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
     }
