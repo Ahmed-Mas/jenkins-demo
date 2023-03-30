@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        imageId = "jenkins-demo:" + ${currentBuild.number}
+        imageId = "jenkins-demo:${currentBuild.number}"
     }
     stages {
         stage("Build/Test") {
